@@ -3,5 +3,4 @@ ansible_password: Sh1v@m123456
 ansible_connection: winrm
 ansible_winrm_transport: basic
 ansible_port: 5985
-ansible_python_interpreter: /usr/bin/python3.12 
-
+ansible_python_interpreter: /usr/bin/python3.12
