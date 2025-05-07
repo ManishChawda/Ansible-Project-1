@@ -1,0 +1,11 @@
+{
+    "ansible.python.interpreterPath": "/home/manishc/Ansible-Project-1/.ansibleproject1-env/bin/python",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.ansibleproject1-env/bin/python",
+    "python.pythonPath": "${workspaceFolder}/.ansibleproject1-env/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.venvPath": "${workspaceFolder}",
+    "terminal.integrated.env.linux": {
+      "VIRTUAL_ENV": "${workspaceFolder}/.ansibleproject1-env",
+      "PATH": "${workspaceFolder}/.ansibleproject1-env/bin:${env:PATH}"
+    }
+}

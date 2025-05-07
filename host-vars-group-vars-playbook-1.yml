@@ -1,0 +1,14 @@
+- name: Create user on selected hosts
+  hosts: "{{ target }}"
+  become: true
+  tasks:
+    - name: Ensure user {{ username }} exists
+      ansible.builtin.user:
+        name: "{{ username }}"
+        state: present
+      register: user_result
+
+    - name: Print user creation result
+      debug:
+        msg: "User {{ username }} exists"
+      

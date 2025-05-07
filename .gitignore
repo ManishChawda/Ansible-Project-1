@@ -1,0 +1,10 @@
+# Ignore Python virtual environments
+.ansibleproject1-env/
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore Ansible retry files
+*.retry
+
+# Ignore 
