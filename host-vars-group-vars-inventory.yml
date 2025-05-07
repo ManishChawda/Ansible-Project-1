@@ -1,17 +1,18 @@
-# inventory
 [centos]
-localhost ansible_connection=local
-192.168.250.3 ansible_ssh_user=manishc ansible_python_interpreter=/usr/bin/python3.12
+server1 ansible_host=192.168.250.2 ansible_user=manishc ansible_python_interpreter=/usr/bin/python3.12
+server2 ansible_host=192.168.250.3 ansible_user=manishc ansible_python_interpreter=/usr/bin/python3.12
 
 [ubuntu]
-192.168.250.4 ansible_ssh_user=manishc ansible_python_interpreter=/usr/bin/python3.12
+server3 ansible_host=192.168.250.4 ansible_user=manishc ansible_python_interpreter=/usr/bin/python3.12
 
 [windows]
-192.168.250.5
+server4 ansible_host=192.168.250.5
 
 [windows:vars]
 ansible_user=Administrator
 ansible_password=Sh1v@m123456
 ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_port=5985
 ansible_winrm_server_cert_validation=ignore
 ansible_python_interpreter=/usr/bin/python3.12

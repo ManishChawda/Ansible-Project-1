@@ -1,5 +1,3 @@
-ansible_user: manishc
 ansible_become: true
 ansible_become_method: sudo
-ansible_become_ask_pass: true
-ansible_python_interpreter: /usr/bin/python3.12
+username: manishc

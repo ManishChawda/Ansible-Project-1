@@ -1,6 +1,8 @@
 - name: Create user on selected hosts
   hosts: "{{ target }}"
   become: true
+  vars:
+    username: "{{ username | default('manishc') }}"
   tasks:
     - name: Ensure user {{ username }} exists
       ansible.builtin.user:
@@ -8,7 +10,16 @@
         state: present
       register: user_result
 
-    - name: Print user creation result
+    - name: User {{ username }} was created
       debug:
-        msg: "User {{ username }} exists"
-      
+        msg: "User {{ username }} was created"
+      when: user_result.changed
+
+    - name: User {{ username }} already exists
+      debug:
+        msg: "User {{ username }} already exists"
+      when: not user_result.changed
+
+
+
+# ansible-playbook create_user.yml -i inventory.yml --extra-vars "target=ubuntu username=manishc"
