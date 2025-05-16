@@ -1,1 +1,3 @@
+#host_vars/server1.yml
 hostname: server1
+ansible_connection: local

@@ -1,0 +1,23 @@
+#host-vars-group-vars-hosts
+[centos]
+server1 ansible_host=192.168.250.2 
+server2 ansible_host=192.168.250.3
+
+[ubuntu]
+server3 ansible_host=192.168.250.4
+
+[windows]
+server4 ansible_host=192.168.250.5
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Sh1v@m123456
+ansible_connection=winrm
+ansible_winrm_transport=basic
+#ansible_port=5985
+ansible_port=5986
+ansible_winrm_transport=ssl
+username=neil
+ansible_become=false            
+ansible_winrm_server_cert_validation=ignore
+#ansible_winrm_ca_trust_path=/etc/pki/ca-trust/source/anchors/Ansible-Node.cer

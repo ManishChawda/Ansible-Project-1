@@ -1,3 +1,4 @@
 # group_vars/all.yml
 timezone: UTC
 backup: true
+#username: devuser  # common username to be created

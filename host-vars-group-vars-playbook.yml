@@ -1,17 +1,46 @@
-# playbook.yml
----
-- name: Configure webservers
-  hosts: centos
-  become: yes
+#host-vars-group-vars-playbook-1.yml
+- name: Cross-platform configuration
+  hosts: "{{ target }}"
+  gather_facts: true
   tasks:
-    - name: Show hostname
+  
+    - name: Create user on Linux
+      ansible.builtin.user:
+        name: "{{ username }}"
+        state: present
+      when: ansible_os_family != "Windows"
+      become: true
+      register: linux_user_result
+
+    - name: Create user on Windows
+      ansible.windows.win_user:
+        name: "{{ username }}"
+        password: "P@ssw0rd123!"
+        state: present
+      when: ansible_os_family == "Windows"
+      register: win_user_result
+
+    - name: Print user creation status (Linux)
+      when: ansible_os_family != "Windows"
       debug:
-        msg: "This server is {{ ansible_hostname }} with IP {{ ansible_host }}"
-    
+        msg: "Linux user '{{ username }}' ensured: {{ linux_user_result }}"
+
+    - name: Print user creation status (Windows)
+      when: ansible_os_family == "Windows"
+      debug:
+        msg: "Windows user '{{ username }}' ensured: {{ win_user_result }}"
+
+    - name: Show hostname and IP (Linux only)
+      #when: ansible_os_family != "Windows"
+      debug:
+        msg: "This server is {{ inventory_hostname }} ({{ ansible_hostname }}) with IP {{ ansible_host }}"
+
     - name: Print timezone
+      #when: ansible_os_family != "Windows"
       debug:
         msg: "The timezone is {{ timezone }}"
-    
+
     - name: Print backup status
+      #when: ansible_os_family != "Windows"
       debug:
         msg: "Backup enabled: {{ backup }}"

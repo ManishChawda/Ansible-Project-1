@@ -1,3 +1,7 @@
+#groups_vars/centos using password.yml
+ansible_user: manishc
 ansible_become: true
 ansible_become_method: sudo
-username: manishc
+ansible_become_pass: Sh1v@m123456
+ansible_python_interpreter: /usr/bin/python3.12
+username: centosuser
